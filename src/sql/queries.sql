@@ -11,6 +11,7 @@ FROM observations
 ORDER BY id
 LIMIT 10;
 
+
 -- MISSION 2
 -- 2. ¿Qué identificadores de región (region_id) aparecen en los datos?;
 SELECT DISTINCT region_id
@@ -64,6 +65,7 @@ GROUP BY species_id
 HAVING COUNT(*) < 5
 ORDER BY menos_registros ASC, species_id ASC;
 
+
 -- MISSION 9
 -- 9. ¿Qué observadores (observer) registraron más observaciones?;
 SELECT observer, COUNT(*) AS mas_observaciones
@@ -72,21 +74,24 @@ GROUP BY observer
 ORDER BY mas_observaciones DESC
 LIMIT 10;
 
+
 -- MISSION 10
--- 10. Muestra el nombre de la región (regions.name) para cada observación.
+-- 10. Muestra el nombre de la región (regions.name) para cada observación;
 SELECT obs.id, obs.observation_date, obs.observer, obs.region_id, reg.name AS region_name
 FROM observations AS obs JOIN regions AS reg 
 ON reg.id = obs.region_id
 ORDER BY obs.id LIMIT 10;
 
+
 -- MISSION 11
--- 11. Muestra el nombre científico de cada especie registrada (species.scientific_name).
+-- 11. Muestra el nombre científico de cada especie registrada (species.scientific_name);
 SELECT obs.id, obs.observation_date, obs.observer, obs.species_id, sp.scientific_name, sp.common_name
 FROM observations AS obs JOIN species AS sp ON sp.id = obs.species_id
 ORDER BY obs.id LIMIT 10;
 
+
 -- MISSION 12
--- 12. ¿Cuál es la especie más observada por cada región?
+-- 12. ¿Cuál es la especie más observada por cada región?;
 WITH conteos AS (
   SELECT obs.region_id, obs.species_id, COUNT(*) AS total_obs
   FROM observations AS obs
