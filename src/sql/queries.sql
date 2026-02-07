@@ -106,3 +106,8 @@ JOIN max_por_region AS m ON m.region_id = c.region_id AND m.max_obs = c.total_ob
 JOIN regions AS reg ON reg.id = c.region_id
 JOIN species AS sp ON sp.id = c.species_id
 ORDER BY reg.name;
+
+"He pensado mucho la forma de abordar esta pregunta y vi que en muchas regiones se observan 
+varias especies con la misma cantidad de observaciones, por lo que decidi mostrar todas las 
+especies que tengan el mismo numero maximo de observaciones por region y las he ordenado 
+alfabeticamente por region."
